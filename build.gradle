@@ -1,0 +1,43 @@
+buildscript {
+    repositories {
+        maven { url = 'https://maven.minecraftforge.net/' }
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:3.+'
+    }
+}
+apply plugin: 'net.minecraftforge.gradle'
+
+version = '0.1.0'
+group = 'com.dogpound.prideprism'
+archivesBaseName = 'PridePrism-1.12.2'
+sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
+
+minecraft {
+    mappings channel: 'snapshot', version: '20171003-1.12'
+}
+
+configurations {
+    embed            // bundled INSIDE our jar: the mod stays self-contained (her rule)
+    compile.extendsFrom embed
+}
+
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.12.2-14.23.5.2860'
+    embed files('libs/mariadb-java-client.jar')   // MariaDB/MySQL driver, LGPL-2.1
+    compileOnly files('libs/realmcoin-dev.jar')     // optional: website orders are paid through RealmCoin
+}
+
+jar {
+    from { configurations.embed.collect { it.isDirectory() ? it : zipTree(it) } }
+    exclude 'META-INF/*.SF', 'META-INF/*.RSA', 'META-INF/*.DSA'
+    manifest {
+        attributes([
+            "Specification-Title": "prideprism",
+            "Specification-Vendor": "dogpound",
+            "Implementation-Version": "${version}"
+        ])
+    }
+}
+jar.finalizedBy('reobfJar')

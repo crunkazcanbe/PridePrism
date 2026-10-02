@@ -1,0 +1,12 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [" E ", "RCR", "GQG"],
+  "key": {
+    "E": {"item": "minecraft:ender_pearl"},
+    "R": {"type": "forge:ore_dict", "ore": "dustRedstone"},
+    "C": {"type": "forge:ore_dict", "ore": "circuitAdvanced"},
+    "G": {"type": "forge:ore_dict", "ore": "ingotGold"},
+    "Q": {"type": "forge:ore_dict", "ore": "gemQuartz"}
+  },
+  "result": {"item": "prideprism:wireless_transmitter", "count": 2}
+}

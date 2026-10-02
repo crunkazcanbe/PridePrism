@@ -1,0 +1,12 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": ["GPG", "GDG", "CEC"],
+  "key": {
+    "G": {"type": "forge:ore_dict", "ore": "ingotGold"},
+    "P": {"type": "forge:ore_dict", "ore": "paneGlass"},
+    "D": {"type": "forge:ore_dict", "ore": "gemDiamond"},
+    "C": {"type": "forge:ore_dict", "ore": "circuitAdvanced"},
+    "E": {"item": "minecraft:ender_eye"}
+  },
+  "result": {"item": "prideprism:machine_tablet"}
+}

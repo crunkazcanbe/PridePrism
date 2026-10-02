@@ -1,0 +1,11 @@
+[{
+  "modid": "prideprism",
+  "name": "PridePrism",
+  "description": "Logs everything that happens in the world (blocks, doors, buttons, chests, items, chat, deaths) to MySQL, with an inspect wand, a pretty lookup screen, and rollback / restore.",
+  "version": "0.1.0",
+  "mcversion": "1.12.2",
+  "authorList": ["DogPound"],
+  "requiredMods": [],
+  "dependencies": [],
+  "useDependencyInformation": false
+}]
