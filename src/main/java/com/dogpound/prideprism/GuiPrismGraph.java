@@ -17,7 +17,7 @@ import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 
 /**
- * The log as a galaxy ball (her ask 2026-09-28): a glowing centre with every category floating around it on a
+ * The log as a galaxy ball (requested feature): a glowing centre with every category floating around it on a
  * sphere. Drag to spin (it keeps drifting), wheel to zoom, click a dot to fly into it (categories -> actions ->
  * players -> their entries), click an entry to read everything about it, right-click / Backspace to go back out.
  */

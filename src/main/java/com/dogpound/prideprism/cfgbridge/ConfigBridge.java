@@ -23,7 +23,7 @@ import java.util.*;
 import java.util.function.Consumer;
 
 /**
- * Every setting of a mod, editable from its menu (her ask 2026-09-28: "every option, every setting… extremely complex").
+ * Every setting of a mod, editable from its menu (requested feature).
  * The same file goes into each of our mods (own package). Two kinds of config are supported:
  *   - an @Config class (RealmCoin): values live in its static fields; Forge's own Configuration behind it gives the
  *     defaults, ranges and comments;
@@ -73,7 +73,7 @@ public final class ConfigBridge {
     }
 
     /** the Configuration Forge built for an @Config class: Cleanroom's class→config map, then Forge's own lookup, then
-     *  a scan of its file map (her pack runs Cleanroom; the file-path scan alone found nothing there) */
+     *  a scan of its file map (the pack runs Cleanroom; the file-path scan alone found nothing there) */
     @SuppressWarnings("unchecked")
     private static Configuration forgeConfigFor(String name) {
         try {

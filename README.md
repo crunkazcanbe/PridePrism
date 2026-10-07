@@ -66,6 +66,7 @@ Opened with the Home key, the prism button in the player inventory, or `/pp gui`
 - Left column: player and block/item text boxes, category chips (Break, Place, Use, Doors, Chests, Items, Chat, Combat, Deaths, Money, Players, Menus), time range (all time, 1 h, 1 d, 1 w), radius (20, 100, 500, everywhere), Search, Log Galaxy, and Settings.
 - Right: a timeline of results, paged. Tick rows (shift-click selects a range, "All" ticks the page) and use Teleport, Roll back…, or Restore….
 - `/pp gui` accepts `box:`, `at:`, `r:`, `t:` and `p:` words to open the screen on a specific area, which lets a map mod open it on a selection.
+- Follows the pack-wide menu theme chosen in PrideCanvas (Themes) when PrideCanvas is installed; otherwise the default Pride colours are used.
 
 ### Log Galaxy
 A 3D view of the log: categories float on a sphere around a centre. Drag to spin, scroll to zoom, click a dot to fly into it (categories → actions → players → their latest 90 entries), click an entry to read everything about it, right-click or Backspace to go back. Dot size follows the number of entries.
@@ -213,14 +214,15 @@ MIT License. © 2026 crunkazcanbe.
 
 The bundled MariaDB Connector/J is licensed under LGPL-2.1.
 
-## Credits
-
-Made by crunkazcanbe, with Claude.
-
-
 ## Compile-only jars
 
 The build compiles against these jars in `libs/` (other authors' mods / APIs). They are not included in this repo — get them from their official pages and drop them in `libs/` before building:
 
 - `mariadb-java-client.jar`
 - `realmcoin-dev.jar`
+
+## Credits
+
+Made with [Claude Code](https://claude.com/claude-code) and [Blockbench](https://www.blockbench.net).
+
+The bundled MariaDB Connector/J is licensed under LGPL-2.1.

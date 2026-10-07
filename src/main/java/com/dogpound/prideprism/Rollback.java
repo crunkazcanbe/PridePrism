@@ -32,7 +32,7 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemHandlerHelper;
 
 /**
- * The rollback engine (her ask 2026-09-28: "pick exactly what you want to roll back… as complex as you can").
+ * The rollback engine (requested feature).
  *
  *  plan()  — the admin picked entries (or a search): sort them by kind, check each against the world NOW
  *            (conflict = someone changed that spot since), count everything, and list spots for the in-world preview.

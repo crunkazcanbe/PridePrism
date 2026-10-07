@@ -8,7 +8,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import org.lwjgl.input.Keyboard;
 
-/** Client side only: the Home key (free in her pack) opens the PridePrism screen. */
+/** Client side only: the Home key (free in the pack) opens the PridePrism screen. */
 public final class ClientHooks {
     private static final KeyBinding OPEN = new KeyBinding("Open PridePrism", Keyboard.KEY_HOME, "PridePrism");
 
@@ -20,7 +20,7 @@ public final class ClientHooks {
         MinecraftForge.EVENT_BUS.register(new Preview());
     }
 
-    /** her ask: a PridePrism button in the inventory, top-left, beside RealmCoin's column */
+    /** Requested: a PridePrism button in the inventory, top-left, beside RealmCoin's column */
     @SubscribeEvent(priority = net.minecraftforge.fml.common.eventhandler.EventPriority.LOWEST)
     public void onInventory(net.minecraftforge.client.event.GuiScreenEvent.InitGuiEvent.Post e) {
         if (e.getGui() instanceof net.minecraft.client.gui.inventory.GuiInventory)

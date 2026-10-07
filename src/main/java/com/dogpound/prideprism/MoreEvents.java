@@ -31,7 +31,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
-/** Her ask 2026-09-28: log EVERY damn thing. Everything Events.java doesn't already catch, by category switch. */
+/** Requested: log EVERY damn thing. Everything Events.java doesn't already catch, by category switch. */
 public final class MoreEvents {
     private final Map<UUID, BlockPos> lastPos = new HashMap<>();
     private final Map<UUID, Integer> lastLevel = new HashMap<>();   // this Forge has no level-change event: checked each second

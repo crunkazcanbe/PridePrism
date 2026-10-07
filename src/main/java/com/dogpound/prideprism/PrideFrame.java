@@ -12,16 +12,30 @@ import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import org.lwjgl.opengl.GL11;
 
 /**
- * The one look every DogPound menu shares (her ask 2026-09-28: "all the menus consistent, look alike… centered…
- * even if you had to add a scroll bar" — modelled on PrideGuard's hub, the one she liked: dark panel, rainbow bar,
- * square tiles). Copied into each mod (same file, own package) so no mod needs another to run.
+ * The one look every DogPound menu shares (requested feature). Copied into each mod (same file, own package) so no mod needs another to run.
  *
  * Use: PrideFrame f = PrideFrame.fit(width, height);  f.draw(screen, "Title", "right side text");
  * then lay content out inside f.cx, f.cy, f.cw, f.ch (the area under the title bar).
  */
 public final class PrideFrame {
     public static final int[] RAINBOW = {0xFFE40303, 0xFFFF8C00, 0xFFFFED00, 0xFF008026, 0xFF24408E, 0xFF732982, 0xFF5BCEFA, 0xFFF5A9B8};
-    public static final int PINK = 0xFFF5A9B8, BLUE = 0xFF5BCEFA, DIM = 0xFF8A8499, TILE = 0xFF1C1530, TILE_ON = 0xFF6A3FA0, BUTTON = 0xFF2A2238;
+    // Not final: the pack-wide menu theme (PrideCanvas > Themes) repaints these and RAINBOW's contents (see sync()).
+    public static int PINK = 0xFFF5A9B8, BLUE = 0xFF5BCEFA, DIM = 0xFF8A8499, TILE = 0xFF1C1530, TILE_ON = 0xFF6A3FA0, BUTTON = 0xFF2A2238;
+    public static int PANEL_TOP = 0xF2140E22, PANEL_BOTTOM = 0xF2080510, TILE_HOVER = 0xFF2A2140;
+    private static int themeVer = -1;
+
+    /** follow PrideCanvas's menu theme: it publishes the palette in System properties ("pride.theme.*") */
+    public static void sync() {
+        Object v = System.getProperties().get("pride.theme.version");
+        if (!(v instanceof Integer) || (Integer) v == themeVer) return;
+        themeVer = (Integer) v;
+        Object b = System.getProperties().get("pride.theme.band"), p = System.getProperties().get("pride.theme.palette");
+        if (b instanceof int[]) { int[] bb = (int[]) b; System.arraycopy(bb, 0, RAINBOW, 0, Math.min(bb.length, RAINBOW.length)); }
+        if (p instanceof int[] && ((int[]) p).length >= 9) {
+            int[] q = (int[]) p;
+            PANEL_TOP = q[0]; PANEL_BOTTOM = q[1]; TILE = q[2]; TILE_HOVER = q[3]; TILE_ON = q[4]; BUTTON = q[5]; PINK = q[6]; BLUE = q[7]; DIM = q[8];
+        }
+    }
     public static final int HEADER = 30;                 // title bar height inside the panel
 
     public final int x, y, w, h;                         // the panel
@@ -46,7 +60,8 @@ public final class PrideFrame {
     public void draw(GuiScreen screen, String title, String right) {
         FontRenderer fr = Minecraft.getMinecraft().fontRenderer;
         screen.drawDefaultBackground();
-        gradient(x, y, x + w, y + h, 0xF2140E22, 0xF2080510);
+        sync();
+        gradient(x, y, x + w, y + h, PANEL_TOP, PANEL_BOTTOM);
         int sw = w / RAINBOW.length;
         for (int i = 0; i < RAINBOW.length; i++) Gui.drawRect(x + i * sw, y, i == RAINBOW.length - 1 ? x + w : x + (i + 1) * sw, y + 3, RAINBOW[i]);
         fr.drawStringWithShadow("§l✦ " + title, x + 10, y + 11, 0xFFFFFF);
@@ -56,7 +71,8 @@ public final class PrideFrame {
 
     /** a square tile like PrideGuard's hub: coloured top edge, lighter when hovered */
     public static void tile(int x, int y, int w, int h, int accent, boolean hover, boolean on) {
-        Gui.drawRect(x, y, x + w, y + h, on ? TILE_ON : hover ? 0xFF2A2140 : TILE);
+        sync();
+        Gui.drawRect(x, y, x + w, y + h, on ? TILE_ON : hover ? TILE_HOVER : TILE);
         Gui.drawRect(x, y, x + w, y + 2, accent);
     }
 

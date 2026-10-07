@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
- * The data behind the graph ball (her ask 2026-09-28). A path picks how deep you are:
+ * The data behind the graph ball (requested feature). A path picks how deep you are:
  *   []                       -> categories (Break, Combat, Menus...)
  *   [cat]                    -> the actions in it
  *   [cat, action]            -> the players who did it
